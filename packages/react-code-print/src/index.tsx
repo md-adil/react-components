@@ -23,11 +23,16 @@ export interface CodeProps {
     style?: CSSProperties;
     className?: string;
     color?: boolean;
+    collapsed?: boolean;
 }
 
-export function Code({ value, indent = 4, height, style, className, color = true }: CodeProps) {
+export function Code({ value, indent = 4, height, style, className, collapsed = false, color = true }: CodeProps) {
     const [search, setSearch] = useState("");
-    const [collapsed, setCollapsed] = useState(false);
+    const [isCollapsed, setCollapsed] = useState(collapsed);
+    useEffect(() => {
+        setCollapsed(collapsed);
+    }, [collapsed]);
+
     const lines = useMemo(() => {
         if (!value) {
             return value;
@@ -38,13 +43,12 @@ export function Code({ value, indent = 4, height, style, className, color = true
         if (!search) {
             return value;
         }
-
         if (typeof value.toJSON === "function") {
             return filter(value.toJSON(), search);
         }
         return filter(value, search);
     }, [value, search]);
-    if (collapsed) {
+    if (isCollapsed) {
         return (
             <div className={styles.container}>
                 <div className={styles.controls}>
@@ -73,7 +77,7 @@ export function Code({ value, indent = 4, height, style, className, color = true
                     <button onClick={() => setSearch('')} className={clsx(styles.btn, styles.clear)}>&#x2715;</button>
                 </div>
                 <ButtonCopy className={clsx(styles.btn, styles.copy)} onCopy={handleCopy} />
-                <button onClick={() => setCollapsed(true)} className={clsx(styles.btn, styles.collapse)}>-</button>
+                <button onClick={() => setCollapsed(true)} className={clsx(styles.btn, styles.collapse)}>&#8722;</button>
             </div>
             <pre
                 style={{ ...style, maxHeight: height }}
