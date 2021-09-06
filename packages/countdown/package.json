@@ -1,0 +1,10 @@
+{
+  "name": "react-countdown",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Md Adil",
+  "license": "MIT",
+  "peerDependencies": {
+    "date-fns": "^2.*"
+  }
+}
