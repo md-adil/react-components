@@ -1,16 +1,22 @@
-# Coding with visibility fasten development speed.
+# React Code Print
+### Coding with visibility fasten development speed.
 
 > Sometime just `console.log` isn't enough to see a lot of JSON response
 
 presenting *Code Print* to make more visibility on not just code but data also
 
-## installation
+
+Try yourself on **storybook** [Demo](https://md-adil.github.io/react-components/?path=/story/example-code--default)
+
+
+# Getting started
 
     yarn add react-code-print
 
+# Basic Usage
 
 ```ts
-import {Code} from "react-code-print"
+import { Code } from "react-code-print"
 
 const person = {
   "id": 1,

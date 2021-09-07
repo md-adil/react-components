@@ -91,10 +91,12 @@ export function Code({ value, indent = 4, height, style, className, collapsed = 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     onCopy(): void;
 }
-export function ButtonCopy({onCopy, ...props}: IButtonProps) {
+
+function ButtonCopy({ onCopy, ...props }: IButtonProps) {
     const [isCopied, setCopied] = useState(false);
     const {current: state} = useRef<any>({});
     const handleCopy = () => {
+        onCopy();
         setCopied(true);
         state.timer = setTimeout(() => {
             setCopied(false);
