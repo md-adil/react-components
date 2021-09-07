@@ -5,6 +5,8 @@
   "author": "Md Adil",
   "license": "MIT",
   "peerDependencies": {
-    "date-fns": "^2.*"
+    "date-fns": "^2.*",
+    "react": "*",
+    "react-dom": "*"
   }
 }

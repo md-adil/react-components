@@ -1,18 +1,24 @@
-import { useEffect } from "@storybook/addons";
+import React, { CSSProperties, useRef, useState, useEffect } from "react";
 import { addSeconds, format } from "date-fns";
-import React, { CSSProperties, useRef, useState } from "react";
 
 interface IProps {
     seconds?: number;
     onComplete?(): void;
     style?: CSSProperties;
 }
-export function Countdown({seconds = 60, style, onComplete}: IProps): JSX.Element {
+export function Countdown({seconds = 60, style, onComplete}: IProps) {
     const [countdownSeconds, setCountdownSeconds] = useState(seconds);
     const timer = useRef<any>();
     useEffect(() => {
         timer.current = setInterval(() => {
-            setCountdownSeconds(x => x + 1);
+            setCountdownSeconds(x => {
+                if (x < 1) {
+                    clearInterval(timer.current);
+                    onComplete?.call(null);
+                    return 0;
+                }
+                return x - 1
+            });
         }, 1000);
         return () => clearTimeout(timer.current);
     }, [])
