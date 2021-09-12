@@ -10,21 +10,21 @@ const Context = createContext<State>([
 
 export interface SharedStateProps<T> {
     children: ReactNode;
-    value: T;
+    value?: T;
     watch?: boolean;
 }
 
-export function SharedState<T>({ children, value, watch = true }: SharedStateProps<T>) {
-    const state = useState<T>(value);
+export function SharedState<T>({ children, value, watch = false }: SharedStateProps<T>) {
+    const state = useState<T>(value!);
     useEffect(() => {
         if (!watch) {
             return;
         }
-        state[1](value);
+        state[1](value!);
     }, [value]);
     return createElement(Context.Provider, { value: state }, children);
 }
 
-export function useSharedState() {
-    return useContext(Context);
+export function useSharedState<T = any>() {
+    return useContext<State<T>>(Context);
 }
