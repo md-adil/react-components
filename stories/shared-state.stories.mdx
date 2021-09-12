@@ -1,0 +1,14 @@
+# Shared state
+
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { SharedState } from "../shared-state/src/index.ts";
+<Meta title="Example/SharedState" component={SharedState} />
+<Canvas>
+    <Story name="Shared state">
+        <form>
+           <SharedState>
+               Hello
+           </SharedState>
+        </form>
+    </Story>
+</Canvas>

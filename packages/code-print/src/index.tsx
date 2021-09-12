@@ -58,10 +58,11 @@ export function Code({ value, indent = 4, height, style, className, collapsed = 
         )
     }
     const handleCopy = () => {
-        if (!("clipboard" in navigator)) {
-            return;
+        try {
+            navigator.clipboard.writeText(JSON.stringify(lines, undefined, indent));
+        } catch(err) {
+            alert('Unable to copy');
         }
-        navigator.clipboard.writeText(JSON.stringify(lines, undefined, indent));
     };
     return (
         <div className={styles.container}>

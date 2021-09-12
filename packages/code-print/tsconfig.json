@@ -1,12 +1,15 @@
 {
   "include": ["./src/**/*"],
+  "exclude": ["dist"],
   "compilerOptions": {
     "target": "ES2019",
+    "module": "esnext",
     "jsx": "react",
-    "module": "ESNext",
     "strict": true,
-    "moduleResolution": "node",
+    "outDir": "dist",
     "esModuleInterop": true,
-    "declaration": true
+    "moduleResolution": "node",
+    "declaration": true,
+    "declarationDir": "."
   }
 }

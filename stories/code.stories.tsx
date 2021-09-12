@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Code } from '../packages/react-code-print/src';
+import { Code } from '../packages/code-print/src';
 
 export default {
   title: 'Example/Code',

@@ -1,0 +1,12 @@
+{
+    "include": ["./src/**/*"],
+    "exclude": ["dist"],
+    "compilerOptions": {
+        "target": "ES2019",
+        "module": "esnext",
+        "declaration": true,
+        "declarationDir": ".",
+        "strict": true,
+        "outDir": "dist"
+    }
+}

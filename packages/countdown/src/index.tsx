@@ -1,12 +1,12 @@
 import React, { CSSProperties, useRef, useState, useEffect } from "react";
 import { addSeconds, format } from "date-fns";
 
-interface IProps {
+export interface CountdownProps {
     seconds?: number;
     onComplete?(): void;
     style?: CSSProperties;
 }
-export function Countdown({seconds = 60, style, onComplete}: IProps) {
+export function Countdown({seconds = 60, style, onComplete}: CountdownProps) {
     const [countdownSeconds, setCountdownSeconds] = useState(seconds);
     const timer = useRef<any>();
     useEffect(() => {
