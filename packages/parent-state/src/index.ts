@@ -8,13 +8,13 @@ const Context = createContext<State>([
     },
 ]);
 
-export interface SharedStateProps<T> {
+export interface ParentStateProps<T> {
     children: ReactNode;
     value?: T;
     watch?: boolean;
 }
 
-export function SharedState<T>({ children, value, watch = false }: SharedStateProps<T>) {
+export function ParentState<T>({ children, value, watch = false }: ParentStateProps<T>) {
     const state = useState<T>(value!);
     useEffect(() => {
         if (!watch) {
@@ -25,6 +25,6 @@ export function SharedState<T>({ children, value, watch = false }: SharedStatePr
     return createElement(Context.Provider, { value: state }, children);
 }
 
-export function useSharedState<T = any>() {
+export function useParentState<T = any>() {
     return useContext<State<T>>(Context);
 }

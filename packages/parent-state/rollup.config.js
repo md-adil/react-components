@@ -1,9 +1,5 @@
 import { defineConfig } from "rollup";
-
 import typescript from "@rollup/plugin-typescript";
-// import resolve from "@rollup/plugin-node-resolve";
-// import commonjs from "@rollup/plugin-commonjs";
-
 const external = require("rollup-plugin-peer-deps-external");
 
 export default defineConfig({

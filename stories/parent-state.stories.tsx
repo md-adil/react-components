@@ -1,29 +1,29 @@
 import React from "react";
 import { ComponentMeta } from "@storybook/react";
-import { SharedState, useSharedState } from "../packages/shared-state";
+import { ParentState, useParentState } from "react-parent-state";
 
 export default {
-    title: 'Example/SharedState',
-    component: SharedState,
-} as ComponentMeta<typeof SharedState>;
+    title: 'Example/ParentState',
+    component: ParentState,
+} as ComponentMeta<typeof ParentState>;
 
 function Counter() {
-    const [count] = useSharedState();
+    const [count] = useParentState();
     return <div>{count}</div>
 }
 
 function UpdateCounter() {
-    const [, updateCount] = useSharedState<number>();
+    const [, updateCount] = useParentState<number>();
     return <button onClick={() => updateCount(x => x + 1)}>Increment</button>
 }
 
 export function Usage() {
     return (
         <div>
-            <SharedState value={1}>
+            <ParentState value={1}>
                 <Counter />
                 <UpdateCounter />
-            </SharedState>
+            </ParentState>
         </div>
     )
 }
